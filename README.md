@@ -17,10 +17,10 @@ Installation
 docker pull romeoz/docker-nginx
 ```
 
-or development version (1.9):
+or development version (1.9.*):
 
 ```bash
-docker pull romeoz/docker-nginx:dev
+docker pull romeoz/docker-nginx:1.9
 ```
 
 Alternately you can build the image yourself.
