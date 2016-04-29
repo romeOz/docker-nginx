@@ -49,10 +49,19 @@ docker exec -it app bash
 Linked to other container
 -------------------
 
+Create bridge networking:
+
+```bash
+docker network create app_net
+```
+
+>A new API available since Docker >1.9 
+
 As an example, will link with PHP. 
 
 ```bash
 docker run --name app -d \
+    --net app_net
     -v /host/to/app:/var/www/app \
     romeoz/docker-phpfrpm
 ```
@@ -91,7 +100,7 @@ Run the nginx image:
 ```bash
 docker run --name nginx -d \
     -v /host/to/sites-enabled:/etc/nginx/sites-enabled \
-    --link app:app -p 8080:80 \ 
+    --net app_net -p 8080:80 \ 
     romeoz/docker-nginx
 ```
 
@@ -140,7 +149,7 @@ Create the file `/etc/logrotate.d/docker-containers` with the following text ins
 Out of the box
 -------------------
  * Ubuntu 14.04.3 (LTS)
- * Nginx 1.8/1.9
+ * Nginx 1.8/1.9/1.10
 
 License
 -------------------
