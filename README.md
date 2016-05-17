@@ -10,7 +10,7 @@ Table of Contents
 Installation
 -------------------
 
- * [Install Docker](https://docs.docker.com/installation/) or [askubuntu](http://askubuntu.com/a/473720)
+ * [Install Docker 1.9+](https://docs.docker.com/installation/) or [askubuntu](http://askubuntu.com/a/473720)
  * Pull the latest version of the image.
  
 ```bash
@@ -55,7 +55,7 @@ Create bridge networking:
 docker network create app_net
 ```
 
->A new API available since Docker >1.9 
+>A new API available since Docker 1.9+ 
 
 As an example, will link with PHP. 
 
@@ -148,8 +148,8 @@ Create the file `/etc/logrotate.d/docker-containers` with the following text ins
 
 Out of the box
 -------------------
- * Ubuntu 14.04.3 (LTS)
- * Nginx 1.8/1.9/1.10
+ * Ubuntu 14.04 or 16.04 LTS
+ * Nginx 1.8, 1.9 or 1.10
 
 License
 -------------------

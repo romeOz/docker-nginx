@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM ubuntu:xenial
 MAINTAINER romeOz <serggalka@gmail.com>
 
 ENV OS_LOCALE="en_US.UTF-8"
@@ -12,8 +12,8 @@ RUN	\
 	&& apt-get update \
 	&& apt-get install --no-install-recommends -y $buildDeps \
 	&& wget -O - http://nginx.org/keys/nginx_signing.key | apt-key add - \
-	&& echo "deb http://nginx.org/packages/ubuntu/ trusty nginx" | tee -a /etc/apt/sources.list \
-	&& echo "deb-src http://nginx.org/packages/ubuntu/ trusty nginx" | tee -a /etc/apt/sources.list \
+	&& echo "deb http://nginx.org/packages/ubuntu/ xenial nginx" | tee -a /etc/apt/sources.list \
+	&& echo "deb-src http://nginx.org/packages/ubuntu/ xenial nginx" | tee -a /etc/apt/sources.list \
 	&& apt-get update \
 	&& apt-get install -y nginx \
 	# Cleaning
