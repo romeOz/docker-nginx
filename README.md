@@ -34,7 +34,7 @@ docker build -t="$USER/docker-nginx" .
 Quick Start
 -------------------
 
-Run the application image:
+Run nginx container:
 
 ```bash
 docker run --name app -d -p 8080:80 romeoz/docker-nginx
@@ -95,7 +95,7 @@ server {
 }
 ```
 
-Run the nginx image:
+Run the nginx container:
 
 ```bash
 docker run --name nginx -d \
@@ -154,4 +154,4 @@ Out of the box
 License
 -------------------
 
-Nginx container image is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+Nginx docker image is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
