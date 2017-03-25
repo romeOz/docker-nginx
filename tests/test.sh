@@ -18,7 +18,7 @@ echo
 echo "-- Testing upstream"
 docker network create ngx_test
 docker run --name app -d --net ngx_test -v $(pwd)/app:/var/www/app romeoz/docker-phpfpm; sleep 5
-docker run --name nginx-test -d --net ngx_test -v $(pwd)/sites-enabled:/etc/nginx/sites-enabled -p 8080:80 --link app:app nginx-18; sleep 5
+docker run --name nginx-test -d -v $(pwd)/sites-enabled:/etc/nginx/sites-enabled -p 8080:80 --net ngx_test nginx-18; sleep 5
 curl 127.0.0.1:8080 2>/dev/null | grep -wc 'Hello world'
 
 
