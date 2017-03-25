@@ -8,12 +8,14 @@ ENV LANG=${OS_LOCALE} \
 	LC_ALL=${OS_LOCALE}
 
 RUN	\
-	buildDeps='software-properties-common python-software-properties' \
+	buildDeps='wget' \
 	&& apt-get update \
 	&& apt-get install --no-install-recommends -y $buildDeps \
-	&& add-apt-repository -y ppa:nginx/stable \
+	&& wget -O - http://nginx.org/keys/nginx_signing.key | apt-key add - \
+	&& echo "deb http://nginx.org/packages/ubuntu/ trusty nginx" | tee -a /etc/apt/sources.list \
+	&& echo "deb-src http://nginx.org/packages/ubuntu/ trusty nginx" | tee -a /etc/apt/sources.list \
 	&& apt-get update \
-	&& apt-get install -y nginx \
+	&& apt-get install -y nginx=1.8.1-1~trusty \
 	# Cleaning
 	&& apt-get purge -y --auto-remove $buildDeps \
 	&& apt-get autoremove -y && apt-get clean \
