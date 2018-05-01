@@ -14,7 +14,7 @@ RUN	\
 	&& echo "deb http://nginx.org/packages/mainline/ubuntu/ xenial nginx" | tee -a /etc/apt/sources.list \
 	&& echo "deb-src http://nginx.org/packages/mainline/ubuntu/ xenial nginx" | tee -a /etc/apt/sources.list \
 	&& apt-get update \
-	&& apt-get install -y nginx \
+	&& apt-get install -y nginx=1.13.12-1~xenial \
 	# Cleaning
 	&& apt-get purge -y --auto-remove $buildDeps locales \
 	&& apt-get autoremove -y && apt-get clean \

@@ -149,7 +149,7 @@ Create the file `/etc/logrotate.d/docker-containers` with the following text ins
 Out of the box
 -------------------
  * Ubuntu 14.04 or 16.04 LTS
- * Nginx stable: 1.8, 1.10, 1.12 or dev: 1.9, 1.11, 1.13 
+ * Nginx stable: 1.8, 1.10, 1.12, 1.14 or dev: 1.9, 1.11, 1.13 
 
 License
 -------------------
