@@ -17,7 +17,7 @@ Installation
 docker pull romeoz/docker-nginx
 ```
 
-or development version (1.13.*):
+or development version (1.15.*):
 
 ```bash
 docker pull romeoz/docker-nginx:dev
@@ -148,8 +148,8 @@ Create the file `/etc/logrotate.d/docker-containers` with the following text ins
 
 Out of the box
 -------------------
- * Ubuntu 14.04 or 16.04 LTS
- * Nginx stable: 1.8, 1.10, 1.12, 1.14 or dev: 1.9, 1.11, 1.13 
+ * Ubuntu 14.04, 16.04 or 18.04 LTS
+ * Nginx stable: 1.8, 1.10, 1.12, 1.14 or dev: 1.9, 1.11, 1.13, 1,15 
 
 License
 -------------------
