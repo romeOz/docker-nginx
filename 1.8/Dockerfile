@@ -1,7 +1,8 @@
 FROM ubuntu:trusty
 MAINTAINER romeOz <serggalka@gmail.com>
 
-ENV OS_LOCALE="en_US.UTF-8"
+ENV OS_LOCALE="en_US.UTF-8" \
+    DEBIAN_FRONTEND=noninteractive
 RUN locale-gen ${OS_LOCALE}
 ENV LANG=${OS_LOCALE} \
 	LANGUAGE=en_US:en \
