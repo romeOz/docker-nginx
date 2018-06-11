@@ -201,5 +201,33 @@ docker rm -f -v app nginx-test; sleep 5
 docker network rm ngx_test
 docker rmi -f nginx-114
 
+
+echo
+echo
+echo "-- Building Nginx 1.15"
+docker build -t nginx-115 ../1.15/
+
+echo
+echo "-- Testing server is running"
+docker run --name app -d -p 8080:80 nginx-115; sleep 5
+curl -I 127.0.0.1:8080 2>/dev/null | grep -wc '200 OK'
+
+echo
+echo "-- Clear"
+docker rm -f -v app; sleep 5
+
+echo
+echo "-- Testing upstream"
+docker network create ngx_test
+docker run --name app -d --net ngx_test -v $(pwd)/app:/var/www/app romeoz/docker-phpfpm; sleep 5
+docker run --name nginx-test -d -v $(pwd)/sites-enabled:/etc/nginx/sites-enabled -p 8080:80 --net ngx_test nginx-115; sleep 5
+curl 127.0.0.1:8080 2>/dev/null | grep -wc 'Hello world'
+
+echo
+echo "-- Clear"
+docker rm -f -v app nginx-test; sleep 5
+docker network rm ngx_test
+docker rmi -f nginx-115
+
 echo
 echo "-- Done"
