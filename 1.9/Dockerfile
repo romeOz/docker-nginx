@@ -17,7 +17,7 @@ RUN	\
 	&& apt-get update \
 	&& apt-get install -y nginx=1.9.15-1~xenial \
 	# Cleaning
-	&& apt-get purge -y --auto-remove $buildDeps locales \
+	&& apt-get purge -y --auto-remove $buildDeps \
 	&& apt-get autoremove -y && apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* \
 	# Forward request and error logs to docker log collector
