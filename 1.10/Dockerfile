@@ -9,15 +9,15 @@ ENV LANG=${OS_LOCALE} \
 	LC_ALL=${OS_LOCALE}
 
 RUN	\
-	buildDeps='wget' \
-	&& apt-get install --no-install-recommends -y $buildDeps \
+	BUILD_DEPS='wget' \
+	&& apt-get install --no-install-recommends -y $BUILD_DEPS \
 	&& wget -O - http://nginx.org/keys/nginx_signing.key | apt-key add - \
 	&& echo "deb http://nginx.org/packages/ubuntu/ xenial nginx" | tee -a /etc/apt/sources.list \
 	&& echo "deb-src http://nginx.org/packages/ubuntu/ xenial nginx" | tee -a /etc/apt/sources.list \
 	&& apt-get update \
 	&& apt-get install -y nginx=1.10.3-1~xenial \
 	# Cleaning
-	&& apt-get purge -y --auto-remove $buildDeps \
+	&& apt-get purge -y --auto-remove $BUILD_DEPS \
 	&& apt-get autoremove -y && apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* \
 	# Forward request and error logs to docker log collector

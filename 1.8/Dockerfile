@@ -9,16 +9,16 @@ ENV LANG=${OS_LOCALE} \
 	LC_ALL=${OS_LOCALE}
 
 RUN	\
-	buildDeps='wget' \
+	BUILD_DEPS='wget' \
 	&& apt-get update \
-	&& apt-get install --no-install-recommends -y $buildDeps \
+	&& apt-get install --no-install-recommends -y $BUILD_DEPS \
 	&& wget -O - http://nginx.org/keys/nginx_signing.key | apt-key add - \
 	&& echo "deb http://nginx.org/packages/ubuntu/ trusty nginx" | tee -a /etc/apt/sources.list \
 	&& echo "deb-src http://nginx.org/packages/ubuntu/ trusty nginx" | tee -a /etc/apt/sources.list \
 	&& apt-get update \
 	&& apt-get install -y nginx=1.8.1-1~trusty \
 	# Cleaning
-	&& apt-get purge -y --auto-remove $buildDeps \
+	&& apt-get purge -y --auto-remove $BUILD_DEPS \
 	&& apt-get autoremove -y && apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* \
 	# Forward request and error logs to docker log collector
