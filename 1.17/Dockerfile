@@ -15,7 +15,7 @@ RUN	\
 	&& echo "deb http://nginx.org/packages/mainline/ubuntu/ bionic nginx" | tee -a /etc/apt/sources.list \
 	&& echo "deb-src http://nginx.org/packages/mainline/ubuntu/ bionic nginx" | tee -a /etc/apt/sources.list \
 	&& apt-get update \
-	&& apt-get install -y nginx=1.15.12-1~bionic \
+	&& apt-get install -y nginx \
 	# Cleaning
 	&& apt-get purge -y --auto-remove $BUILD_DEPS \
 	&& apt-get autoremove -y && apt-get clean \
